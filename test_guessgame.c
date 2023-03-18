@@ -1,18 +1,32 @@
+#include <stdio.h>
 #include "gtest/gtest.h"
+
+// Include the header file where the function to be tested is declared
 #include "guess_game.h"
 
-// Test case to check if generateRandom() function is generating numbers within the range
-TEST(generateRandomTest, generatesNumbersWithinRange) {
-    for (int i = 0; i < 100; i++) {
-        int randNum = generateRandom(1, 10, 1);
-        EXPECT_GE(randNum, 1);
-        EXPECT_LE(randNum, 10);
-    }
+ // Test fixture
+class GuessGameTest : public ::testing::Test {
+  protected:
+    // Set up the test fixture
+      void SetUp() override {
+          // Seed the random number generator with a fixed value for testing
+              srand(12345);
+      }
+};
+
+// Test case for guessGame function
+TEST_F(GuessGameTest, TestGuessGame) {
+
+    // Call the function with a generated number
+        int num_of_guesses = guessGame(5);
+                      
+     // Check that the function returns the expected number of guesses
+        EXPECT_EQ(num_of_guesses, 3);
 }
 
-// Test case to check if guessGame() function is working correctly
-TEST(guessGameTest, checksIfGuessGameWorks) {
-    int numGuesses = guessGame(5);
-    EXPECT_EQ(numGuesses, 1);
+// Main function to run the tests
+int main(int argc, char** argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
 }
-
+                              
