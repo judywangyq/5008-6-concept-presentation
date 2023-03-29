@@ -1,32 +1,42 @@
 #include <stdio.h>
-#include "gtest/gtest.h"
+#include <stdlib.h>
+#include <time.h>
+#include "unity.h"
 
-// Include the header file where the function to be tested is declared
 #include "guess_game.h"
 
- // Test fixture
-class GuessGameTest : public ::testing::Test {
-  protected:
-    // Set up the test fixture
-      void SetUp() override {
-          // Seed the random number generator with a fixed value for testing
-              srand(12345);
-      }
-};
+// Declare functions from guessinggame.c to be tested
+int generateRandom(int lower, int upper, int count);
+int guessGame(int genNum);
 
-// Test case for guessGame function
-TEST_F(GuessGameTest, TestGuessGame) {
+// Declare test functions
+void test_generateRandom(void);
+void test_guessGame(void);
 
-    // Call the function with a generated number
-        int num_of_guesses = guessGame(5);
-                      
-     // Check that the function returns the expected number of guesses
-        EXPECT_EQ(num_of_guesses, 3);
+// Set up function for Unity framework
+void setUp(void) {}
+
+// Tear down function for Unity framework
+void tearDown(void) {}
+
+int main(void) {
+  UNITY_BEGIN();
+  RUN_TEST(test_generateRandom);
+  RUN_TEST(test_guessGame);
+  return UNITY_END();
 }
 
-// Main function to run the tests
-int main(int argc, char** argv) {
-        ::testing::InitGoogleTest(&argc, argv);
-        return RUN_ALL_TESTS();
+void test_generateRandom(void) {
+  int lower = 1;
+  int upper = 10;
+  int count = 1;
+  int num = generateRandom(lower, upper, count);
+  TEST_ASSERT_TRUE(num >= lower && num <= upper);
 }
-                              
+
+void test_guessGame(void) {
+  int genNum = generateRandom(1, 10, 1);
+  int numOfGuess = guessGame(genNum);
+  TEST_ASSERT_TRUE(numOfGuess > 0 && numOfGuess <= 10);
+}
+
