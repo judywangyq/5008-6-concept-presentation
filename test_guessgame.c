@@ -5,26 +5,11 @@
 
 #include "guess_game.h"
 
-// Declare functions from guessinggame.c to be tested
-int generateRandom(int lower, int upper, int count);
-int guessGame(int genNum);
-
-// Declare test functions
-void test_generateRandom(void);
-void test_guessGame(void);
-
 // Set up function for Unity framework
 void setUp(void) {}
 
 // Tear down function for Unity framework
 void tearDown(void) {}
-
-int main(void) {
-  UNITY_BEGIN();
-  RUN_TEST(test_generateRandom);
-  RUN_TEST(test_guessGame);
-  return UNITY_END();
-}
 
 void test_generateRandom(void) {
   int lower = 1;
@@ -37,6 +22,13 @@ void test_generateRandom(void) {
 void test_guessGame(void) {
   int genNum = generateRandom(1, 10, 1);
   int numOfGuess = guessGame(genNum);
-  TEST_ASSERT_TRUE(numOfGuess > 0 && numOfGuess <= 10);
+  TEST_ASSERT_TRUE(numOfGuess > 0 && numOfGuess <= 5);
+}
+
+int main(void) {
+  UNITY_BEGIN();
+  RUN_TEST(test_generateRandom);
+  RUN_TEST(test_guessGame);
+  return UNITY_END();
 }
 
