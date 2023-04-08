@@ -16,8 +16,9 @@ void test_mergesort_1() {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     sortIntegers(arr, n);
-
-    for (int i = 0; i < n; i++) {
+	
+	int i;
+    for (i = 0; i < n; i++) {
         TEST_ASSERT_EQUAL(expected[i], arr[i]);
     }
 }
@@ -29,7 +30,60 @@ void test_mergesort_2() {
 
     sortIntegers(arr, n);
 
-    for (int i = 0; i < n; i++) {
+	int i;
+    for (i = 0; i < n; i++) {
+        TEST_ASSERT_EQUAL(expected[i], arr[i]);
+    }
+}
+
+void test_mergesort_3() {
+    int arr[] = { -1,1,2,-3,4,5,-6,7,8,-9,10 };
+    int expected[] = { -9,-6,-3,-1,1,2,4,5,7,8,10 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    sortIntegers(arr, n);
+
+	int i;
+    for (i = 0; i < n; i++) {
+        TEST_ASSERT_EQUAL(expected[i], arr[i]);
+    }
+}
+
+void test_mergesort_4() {
+    int arr[] = { 2,1,1,1,1,1,1,1,1,1,1 };
+    int expected[] = { 1,1,1,1,1,1,1,1,1,1,2 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    sortIntegers(arr, n);
+
+	int i;
+    for (i = 0; i < n; i++) {
+        TEST_ASSERT_EQUAL(expected[i], arr[i]);
+    }
+}
+
+void test_mergesort_5() {
+    int arr[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+    int expected[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    sortIntegers(arr, n);
+
+	int i;
+    for (i = 0; i < n; i++) {
+        TEST_ASSERT_EQUAL(expected[i], arr[i]);
+    }
+}
+
+void test_mergesort_6() {
+    int arr[] = { 10,9,8,7,6,5,4,3,2,1,0 };
+    int expected[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    sortIntegers(arr, n);
+
+	int i;
+    for (i = 0; i < n; i++) {
         TEST_ASSERT_EQUAL(expected[i], arr[i]);
     }
 }
@@ -38,6 +92,10 @@ int main() {
     UNITY_BEGIN();
     RUN_TEST(test_mergesort_1);
     RUN_TEST(test_mergesort_2);
+    RUN_TEST(test_mergesort_3);
+    RUN_TEST(test_mergesort_4);
+    RUN_TEST(test_mergesort_5);
+    RUN_TEST(test_mergesort_6);
     UNITY_END();
 
     return 0;
