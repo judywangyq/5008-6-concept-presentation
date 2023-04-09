@@ -22,7 +22,7 @@ TEST_TEAR_DOWN(mergesort) {
 }
 
 
-void test_mergesort_1(mergesort, sortIntegers) {
+void test_mergesort_1() {
     int arr[] = { 5, 1, 3, 6, 4, 2 };
     int expected[] = { 1, 2, 3, 4, 5, 6 };
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -87,7 +87,7 @@ void test_mergesort_5() {
     }
 }
 
-void test_mergesort_6(mergesort, sortIntegers) {
+void test_mergesort_6() {
     int arr[] = { 10,9,8,7,6,5,4,3,2,1,0 };
     int expected[] = { 0,1,2,3,4,5,6,7,8,9,9 };
     int n = sizeof(arr) / sizeof(arr[0]);

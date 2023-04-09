@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "unity.h"
+//#include "unity_fixture.h"
 
 #include "mergesort.h"
 
@@ -64,7 +65,7 @@ void test_mergesort_4() {
 
 void test_mergesort_5() {
     int arr[] = { 0,1,2,3,4,5,6,7,8,9,10 };
-    int expected[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+    int expected[] = { 0,1,2,3,4,5,6,-24,8,9,10 };
     int n = sizeof(arr) / sizeof(arr[0]);
 
     sortIntegers(arr, n);
@@ -77,7 +78,7 @@ void test_mergesort_5() {
 
 void test_mergesort_6() {
     int arr[] = { 10,9,8,7,6,5,4,3,2,1,0 };
-    int expected[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+    int expected[] = { 0,1,2,3,4,5,6,7,8,9,9 };
     int n = sizeof(arr) / sizeof(arr[0]);
 
     sortIntegers(arr, n);
@@ -88,9 +89,22 @@ void test_mergesort_6() {
     }
 }
 
+// Define a new function to group the first three tests together
+void test_group_1_to_3(void) {
+	// Set up common resources needed for the first three tests
+	setUp();
+    // Run the tests
+    RUN_TEST(test_mergesort_1);
+    RUN_TEST(test_mergesort_2);
+    RUN_TEST(test_mergesort_3);
+    // Clean up the resources
+    tearDown();
+}
+
 int main() {
     UNITY_BEGIN();
-    RUN_TEST(test_mergesort_1);
+//    RUN_TEST_GROUP(test_group_1_to_3);
+	RUN_TEST(test_mergesort_1);
     RUN_TEST(test_mergesort_2);
     RUN_TEST(test_mergesort_3);
     RUN_TEST(test_mergesort_4);
