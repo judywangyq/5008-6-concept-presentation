@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include "unity.h"
+#include "unity.h"
 #include "unity_fixture.h"
 
 #include "mergesort.h"
@@ -101,15 +101,15 @@ void test_mergesort_6(mergesort, sortIntegers) {
 }
 
 TEST_GROUP_RUNNER(mergesort) {
-    RUN_TEST_CASE(mergesort, sortIntegers);
-    RUN_TEST_CASE(mergesort, sortIntegers);
+    RUN_TEST_CASE(mergesort, test_mergesort_1);
+    RUN_TEST_CASE(mergesort, test_mergesort_6);
 }
 
 static void runAllTests(void) {
     RUN_TEST_GROUP(mergesort);
 }
 
-int main() {
+int main(int argc, char * argv[]) {
     UNITY_BEGIN();
     RUN_TEST_GROUP(mergesort);
     return UNITY_END();
